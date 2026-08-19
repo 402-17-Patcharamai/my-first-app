@@ -12,6 +12,8 @@ if "ans3_val" not in st.session_state:
     st.session_state.ans3_val = ""
 if "ans4_val" not in st.session_state:
     st.session_state.ans4_val = ""
+if "is_ended" not in st.session_state:
+    st.session_state.is_ended = False
 
 # 📌 ฟังก์ชันเคลียร์ค่าเมื่อกดปุ่มเริ่มใหม่
 def reset_game():
@@ -26,7 +28,7 @@ def reset_game():
 # 📌 ฟังก์ชัน MessageBox (Dialog)
 # ----------------------------------------------------
 @st.dialog("📊 สรุปผลการเล่นเกม")
-def show_result_dialog(ans1,ans2,ans3,ans4):
+def show_result_dialog(ans1, ans2, ans3, ans4):
     st.balloons()
     score = 0
 
@@ -87,7 +89,7 @@ if "start" in st.session_state and not st.session_state.is_ended:
 
 st.divider()
 
-# 3. ช่องรับคำตอบ
+# 3. ช่องรับคำตอบ (แก้เปลี่ยนชื่อตัวแปรเป็น ans1, ans2, ans3, ans4 ให้ถูกต้อง)
 ans1 = st.text_input(
     "ข้อ 1: Monkey eating `b _ n a _ _ `. 🍌",
     value=st.session_state.ans1_val,
@@ -98,13 +100,13 @@ ans2 = st.text_input(
     value=st.session_state.ans2_val,
     key="input_ans2",
 )
-ans2 = st.text_input(
-    "ข้อ 2: `_ e m _ n` have a sour taste . 🍋 ",
+ans3 = st.text_input(
+    "ข้อ 3: `_ e m _ n` have a sour taste . 🍋 ",
     value=st.session_state.ans3_val,
     key="input_ans3",
 )
-    ans2 = st.text_input(
-    "ข้อ 2: `c h _ r r _` is sweet . 🍒 ",
+ans4 = st.text_input(
+    "ข้อ 4: `c h _ r r _` is sweet . 🍒 ",
     value=st.session_state.ans4_val,
     key="input_ans4",
 )
@@ -115,18 +117,19 @@ st.session_state.ans2_val = ans2
 st.session_state.ans3_val = ans3
 st.session_state.ans4_val = ans4
 
-# 4. ปุ่มส่งคำตอบ
+# 4. ปุ่มส่งคำตอบ (ลบ time.sleep และ rerun ออกเพื่อไม่ให้หน้ารีเฟรชรบกวนการพิมพ์)
 if "start" in st.session_state and not st.session_state.is_ended:
     if st.button("📥 ส่งคำตอบ"):
         st.session_state.is_ended = True
         st.rerun()
-
+        
     time.sleep(1)
     st.rerun()
 
+
 # 5. แสดง Dialog ผลลัพธ์
 if st.session_state.get("is_ended", False):
-    show_result_dialog(ans1,ans2,ans3,ans4)
+    show_result_dialog(ans1, ans2, ans3, ans4)
 
 st.divider()
 st.write("นางสาวพัชรมัย มโนชัย เลขที่ 17 ม.4/2")
