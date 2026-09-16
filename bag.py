@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("🛒รวมราคาราคากระเป๋าที่ต้องชำระ")
+st.title("เป๋านี้ราคาเท่าไหร่🛒")
 
 # รับค่าราคากระเป๋า/สินค้า
 price = st.number_input(
