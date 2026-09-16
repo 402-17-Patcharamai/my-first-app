@@ -24,7 +24,7 @@ price = st.number_input(
 
 # คำนวณผลลัพธ์ทันทีเมื่อกรอกตัวเลข
 vat_rate = 0.07  # ภาษี 7%
-discount_rate = 0.05  # ส่วนลด 5%
+discount_rate = 0.02  # ส่วนลด 5%
 
 vat = price * vat_rate
 
