@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("🛒แอปพลิเคชั่นคำนวณราคาสินค้ารวม VAT 7%")
+st.title("🛒รวมราคาราคากระเป๋าที่ต้องชำระ")
 
 # รับค่าราคากระเป๋า/สินค้า
 price = st.number_input(
